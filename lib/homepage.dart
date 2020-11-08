@@ -4,8 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:video_player/video_player.dart';
-
-import 'demo.dart';
+import 'volume.dart';
 
 List<CameraDescription> cameras;
 CameraController _controller;
@@ -24,7 +23,7 @@ class _VideoState extends State<Video> {
 
   Future<void> _initCamera() async {
     cameras = await availableCameras();
-    _controller = CameraController(cameras[1], ResolutionPreset.medium);
+    _controller = CameraController(cameras[1], ResolutionPreset.medium);     // Specifying the camera (front or rear) and resolution
     _controller.initialize().then((_) {
       if (!mounted) {
         return;
@@ -69,7 +68,7 @@ class _VideoState extends State<Video> {
 
 class Videoplayer extends StatefulWidget {
   final String videoData =
-      'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4';
+      'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4';       // Sample Video
   Videoplayer({videoData});
   @override
   _VideoplayerState createState() => _VideoplayerState();
@@ -108,7 +107,7 @@ class _VideoplayerState extends State<Videoplayer> {
   }
 }
 
-class App extends StatefulWidget {
+class App extends StatefulWidget {                              // Class build for dragging the camera streaming
   @override
   AppState createState() => AppState();
 }
@@ -156,7 +155,6 @@ class DragBoxState extends State<DragBox> {
       ),
       // child: Draggable(
       //   child: Container(
-      //     //mainAxisSize: MainAxisSize.min,
       //     width: 200.0,
       //     height: 400.0,
       //     child: CameraApp(),
@@ -166,19 +164,12 @@ class DragBoxState extends State<DragBox> {
       //       position = offset;
       //     });
       //   },
-      //   feedback: Container(
-      //     width: 120.0,
-      //     height: 120.0,
-      //     // color: const Color(0xff707070).withOpacity(0.5),
-      //     child: CameraApp(),
-      //   ),
-      //   //childWhenDragging: CameraApp(),
       // ),
     );
   }
 }
 
-class CameraApp extends StatefulWidget {
+class CameraApp extends StatefulWidget {                                   // Camera Streaming Class
   @override
   CameraAppState createState() => CameraAppState();
 }

@@ -18,7 +18,7 @@ class _PlayerState extends State<Player> {
 
   Future<void> initPlatformState() async {
     await Volume.controlVolume(AudioManager
-        .STREAM_MUSIC); // you can change which volume you want to change.
+        .STREAM_MUSIC);                                     // you can change which volume you want to change.
   }
 
   updateVolumes() async {

@@ -95,10 +95,10 @@ class _GoogleAuthenticationState extends State<GoogleAuthentication> {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30))),
-                        onPressed: () => googleSignIn().whenComplete(() {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
+                        onPressed: () => googleSignIn().whenComplete(() {               // Google Authetication Call
+                          Navigator.pushReplacement(                                      
+                              context,                                     
+                              MaterialPageRoute(                                        // Directed to Video Player
                                   builder: (context) => Videoplayer()));
                         }),
                         child: Padding(
@@ -133,21 +133,5 @@ class _GoogleAuthenticationState extends State<GoogleAuthentication> {
         ),
       ]),
     );
-
-    /*Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blueGrey),
-      body: Container(
-        child: Center(
-          child: MaterialButton(
-            color: Colors.blueAccent,
-            onPressed: () => googleSignIn().whenComplete(() {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Videoplayer()));
-            }),
-            child: Text('Sign In With Google'),
-          ),
-        ),
-      ),
-    ); */
   }
 }
