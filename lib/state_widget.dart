@@ -43,7 +43,98 @@ class _GoogleAuthenticationState extends State<GoogleAuthentication> {
 
   @override
   Widget build(BuildContext context) {
+    final _index = 0;
+    final _height = MediaQuery.of(context).size.height;
+    final _width = MediaQuery.of(context).size.width;
     return Scaffold(
+      body: IndexedStack(index: _index, children: [
+        Container(
+          height: _height,
+          width: _width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: _height / 4,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                radius: 48.0,
+                child: FlutterLogo(
+                  size: 200,
+                  colors: Colors.deepPurple,
+                ),
+              ),
+              SizedBox(
+                height: _height / 4,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: _width / 10,
+                  ),
+                  Text(
+                    "Continue With",
+                    style: TextStyle(fontSize: 30),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: _height / 35,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.fromLTRB(_width / 10, 0, _width / 10, 0),
+                      child: OutlineButton(
+                        borderSide: BorderSide(color: Colors.blue, width: 2),
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30))),
+                        onPressed: () => googleSignIn().whenComplete(() {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Videoplayer()));
+                        }),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Image(
+                                  image: AssetImage("assets/google_logo.png"),
+                                  height: 35.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  'Google',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ]),
+    );
+
+    /*Scaffold(
       appBar: AppBar(backgroundColor: Colors.blueGrey),
       body: Container(
         child: Center(
@@ -57,6 +148,6 @@ class _GoogleAuthenticationState extends State<GoogleAuthentication> {
           ),
         ),
       ),
-    );
+    ); */
   }
 }
